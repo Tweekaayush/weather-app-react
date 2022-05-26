@@ -9,8 +9,6 @@ import "./Card.css";
 
 function Card(props){
 
-    console.log(props)
-
     const iconName = "I" + props.current.weather[0].icon;
     const temperature = props.current.temp- 273.15;
     const clouds = props.current.clouds

@@ -27,7 +27,6 @@ function Main(){
     }
 
     function handleDelete(id){
-        console.log(id);
         data.splice(id, 1);
         setData((prevItems) => [...prevItems]);
     }
