@@ -16,11 +16,9 @@ function Main(){
         const url = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=edddb4aba03f8d88b81611d9bf435a64";
         axios.get(url).then(res => {
             axios.get("https://api.openweathermap.org/data/2.5/onecall?lat="+res.data.coord.lat+"&lon="+res.data.coord.lon+"&appid=edddb4aba03f8d88b81611d9bf435a64").then(resp=>{
-                console.log(resp.data)
                 const listItem = {
                     name: place,
                     current: resp.data.current,
-                    precipitation: resp.data.minutely[0].precipitation,
                     daily: resp.data.daily
                 }
                 setData((prevItems)=>[...prevItems, listItem])
@@ -36,7 +34,7 @@ function Main(){
 
     function createCard(dataItem, i){
         return (<Grid key={i} item sm={12} md={6} lg={4}>
-            <Card key ={i} id={i} name={dataItem.name} current={dataItem.current} daily={dataItem.daily} onDelete={handleDelete} precipitation={dataItem.precipitation}/>
+            <Card key ={i} id={i} name={dataItem.name} current={dataItem.current} daily={dataItem.daily} onDelete={handleDelete}/>
         </Grid>);
     }
 

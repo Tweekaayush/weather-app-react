@@ -8,12 +8,15 @@ import {FiWind} from "react-icons/fi";
 import "./Card.css";
 
 function Card(props){
+
+    console.log(props)
+
     const iconName = "I" + props.current.weather[0].icon;
     const temperature = props.current.temp- 273.15;
+    const clouds = props.current.clouds
     const weather = props.current.weather[0].description;
     const humidity = props.current.humidity;
     const speed = props.current.wind_speed;
-    const precipitation = props.precipitation;
 
     function handleIcon(){
     
@@ -91,8 +94,8 @@ function Card(props){
                                 <span className="char-value">{humidity}%</span>
                             </div>
                             <div className="char">
-                                <h1 className="charHead">Precipitation <BsFillCloudRainFill/></h1>
-                                <p className="char-value">{precipitation}%</p>
+                                <h1 className="charHead">Clouds <BsCloudsFill/></h1>
+                                <p className="char-value">{clouds}</p>
                             </div>
                             <div className="char">
                                 <h1 className="charHead">Wind <FiWind/></h1>

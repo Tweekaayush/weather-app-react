@@ -61,7 +61,7 @@ input:focus {
 .suggest{
     padding: 10px;
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     align-items: center;
     color: black;

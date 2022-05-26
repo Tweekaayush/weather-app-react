@@ -20,14 +20,22 @@ function SearchBar({placeholder, data, handleSearchMain}){
     }
 
     function handleSearch(){
+        handleSearchMain(input);
         setFilteredData([]);
         setInput("");
-        handleSearchMain(input)
     }
 
     function checkKey(e){
-        if(e.keyCode === 13)
-            handleSearch();       
+        if(e.keyCode === 13){
+            if(filteredData.length > 0){
+                handleSearchMain(filteredData[0].name.common);
+                setFilteredData([]);
+                setInput("");
+            }
+            else{
+                handleSearch();
+            }
+        }     
     }
 
     return( 
