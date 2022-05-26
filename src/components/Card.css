@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway:wght@100&display=swap');
+.card-container{
+    position: relative;
+    color: white;
+    background: #4c357592;
+    border-radius: 10px;
+    padding: 0;
+    width: 350px;
+    height: 100%;
+    box-shadow: rgb(38, 33, 65) 0px 20px 30px -10px;
+    backdrop-filter: blur(10px);
+    font-family: "Montserrat";
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.card-container:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(38, 1, 80, 0.8);
+    transform: translateY(110%);
+    overflow: hidden;
+    transition: all 0.5s;
+    transition-delay: 0.25s;
+}
+
+.card-container:hover:before{
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+.content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+h1{
+    width: 100%;
+}
+
+.card-Location{
+    font-size: 30px;
+    letter-spacing: 2px;
+    padding-top: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+hr{
+    height: 1px;
+    width: 60%;
+    margin: auto;
+}
+
+.card-temperature{
+    margin-top: 60px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.temperature-number{
+    font-size: 65px;
+}
+
+.char{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.charHead{
+    text-align: left;
+    font-size: 12px;
+    width: 100%;
+    font-weight: 400;
+    display: flex;
+
+}
+
+.charHead svg{
+    margin-left: 3px;
+}
+
+.char-value{
+    text-align: right;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.card-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(-20%);
+    transition: all 0.25s;
+}
+
+.card-container:hover .card-content{
+    transform: translateY(0);
+    transition-delay: 0.3s;
+    opacity: 1;
+ 
+}
+
+.card-btn{
+    text-decoration: none;
+    font-size: 20px;
+    border: 1px solid white;
+    padding: 10px;
+    background: transparent;
+    color: white;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 1s;
+    position: relative;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: rgb(7, 0, 52) 0px 2px 4px 0px, rgb(7, 0, 52) 0px 2px 16px 0px;
+}
+
+.card-btn:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#fff;
+    transform: translateX(-100%);
+    transition:all 0.5s;
+    z-index: -1;
+}
+
+.card-btn:hover:before{
+    transform: translateX(0);
+}
+
+.card-btn:hover{
+    border: none;
+    color: rgba(1, 15, 80, 1);
+}
+
+.weather-char{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    text-align: left;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.card-weather{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    gap: 1rem;
+    padding: 20px;
+    width: 100%;
+}
+
+
+.weather-img{
+    height: auto;
+    color: white;
+    width: 30%;
+}
+
+.weather-img svg{
+    margin-top: -10px;
+    font-size: 55px;
+}
+
+.weather-name{
+    width: 30%;
+    font-size: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.days-list{
+    margin-top: 50px;
+    display: flex;
+    padding-bottom: 40px;
+    width: 100%;
+}
+.day{
+    padding:5px;
+    border-right: 1px solid white;
+}
+.day:last-child{
+    border: none;
+}
+.dayName{
+    font-size:16px;
+}
+
+.dayTemp{
+    font-size: 13px;
+}
+
+@media screen and (max-width: 510px) {
+    .card-title{
+        font-size: 27px;
+    }
+    .card-btn{
+        font-size: 18px;
+    }
+}
