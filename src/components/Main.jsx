@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {BsSearch} from "react-icons/bs"
-import {Grid} from "@mui/material";
+import {Grid, Snackbar, Alert} from "@mui/material";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import "./Main.css";
@@ -11,8 +11,16 @@ function Main(){
     const [location, setLocation] = useState([]);
     const [data, setData] = useState([]);
     const [list, setList] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [placeN, setPlaceN] = useState(""); 
+    function handleClose(e, reason){
+        if(reason === "clickaway")
+            return;
+        setOpen(false);
+    }
 
     function handleSearch(place){
+        setPlaceN(place)
         const url = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=edddb4aba03f8d88b81611d9bf435a64";
         axios.get(url).then(res => {
             axios.get("https://api.openweathermap.org/data/2.5/onecall?lat="+res.data.coord.lat+"&lon="+res.data.coord.lon+"&appid=edddb4aba03f8d88b81611d9bf435a64").then(resp=>{
@@ -23,6 +31,8 @@ function Main(){
                 }
                 setData((prevItems)=>[...prevItems, listItem])
             })
+        }).catch(err=>{
+            setOpen(true);
         });
     }
 
@@ -50,6 +60,11 @@ function Main(){
             <Grid container spacing={2} className="card-list">
                 {data.length !== 0 && data.map(createCard)}
             </Grid>
+            <Snackbar sx={{marginTop:"300px"}} anchorOrigin={{vertical:"top", horizontal:"center"}} open={open} autoHideDuration={2500} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+                    Cannot find weather details for "{placeN}".
+                </Alert>
+            </Snackbar>
         </section>
     );
 }
