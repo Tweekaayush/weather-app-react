@@ -18,12 +18,12 @@ function Main(){
             return;
         setOpen(false);
     }
-
     function handleSearch(place){
+        const apiKey = process.env.REACT_APP_WEATHER_API;
         setPlaceN(place)
-        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=edddb4aba03f8d88b81611d9bf435a64";
+        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + apiKey;
         axios.get(url).then(res => {
-            axios.get("https://api.openweathermap.org/data/2.5/onecall?lat="+res.data.coord.lat+"&lon="+res.data.coord.lon+"&appid=edddb4aba03f8d88b81611d9bf435a64").then(resp=>{
+            axios.get("https://api.openweathermap.org/data/2.5/onecall?lat="+res.data.coord.lat+"&lon="+res.data.coord.lon+"&appid=" + apiKey).then(resp=>{
                 const listItem = {
                     name: place,
                     current: resp.data.current,
@@ -40,7 +40,7 @@ function Main(){
         data.splice(id, 1);
         setData((prevItems) => [...prevItems]);
     }
-
+    
     function createCard(dataItem, i){
         return (<Grid key={i} item sm={12} md={6} lg={4}>
             <Card key ={i} id={i} name={dataItem.name} current={dataItem.current} daily={dataItem.daily} onDelete={handleDelete}/>
